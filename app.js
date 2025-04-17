@@ -10,17 +10,7 @@ const app = express();
 
 // ✅ CORS middleware আগে রাখো
 app.use(cors({
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      "http://localhost:5173",
-      "https://fresh-veg-frontend.vercel.app"
-    ];
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS not allowed from this origin"));
-    }
-  },
+  origin: ["https://fresh-veg-frontend.vercel.app"],
   credentials: true
 }));
 
