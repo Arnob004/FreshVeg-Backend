@@ -8,11 +8,21 @@ dotenv.config({});
 
 const app = express();
 
-// ✅ CORS middleware আগে রাখো
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://fresh-veg-frontend.vercel.app"
+];
 app.use(cors({
-  origin: ["https://fresh-veg-frontend.vercel.app"],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
+
 
 app.use(express.json());
 app.use(cookieParser());
