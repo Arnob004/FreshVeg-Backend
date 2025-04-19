@@ -10,7 +10,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "http://fresh-veg-frontend.vercel.app"
+  "https://fresh-veg-frontend.vercel.app"
 ];
 app.use(cors({
   origin: function (origin, callback) {
